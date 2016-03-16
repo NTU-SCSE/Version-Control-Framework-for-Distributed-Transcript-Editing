@@ -1,0 +1,4 @@
+def main():
+    os.system("git status")
+    os.system("git pull")
+    pause()

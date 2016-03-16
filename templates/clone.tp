@@ -1,0 +1,3 @@
+def main():
+    os.system("git clone {{repo}}")
+    pause()

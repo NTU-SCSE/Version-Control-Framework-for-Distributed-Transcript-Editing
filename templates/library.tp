@@ -1,0 +1,76 @@
+import os
+import platform
+import datetime
+import json
+import fnmatch
+import sys
+
+from xml.dom.minidom import parseString
+
+
+def get_working_dir():
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+def one_level_up():
+    return os.path.abspath(os.path.join(get_working_dir(), os.pardir))
+
+
+def parent_dir_name():
+    return os.path.basename(one_level_up())
+
+
+def from_working_dir(*args):
+    current_dir = get_working_dir()
+    for x in args:
+        current_dir = os.path.join(current_dir, x)
+    return current_dir
+
+
+def create_directory(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+
+def read_file(path):
+    with open(path) as file:
+        return file.read()
+
+
+def write_file(path, data):
+    file = open(path, 'w+')
+    file.write(data)
+    file.close()
+
+
+def pause():
+    if platform.system() == 'Windows':
+        os.system('pause')
+    else:
+        os.system('read -s -n 1 -p "Press any key to continue..."')
+
+
+def count_markers(file_path):
+    content = read_file(file_path)
+    dom = parseString(content)
+    result = dom.getElementsByTagName('ANNOTATION_VALUE')
+    count = 0
+    for x in result:
+        if x.firstChild:
+            data = x.firstChild.data
+            if data.find('#') != -1:
+                count += 1
+    return count
+
+
+def count_segments(file_path):
+    content = read_file(file_path)
+    dom = parseString(content)
+    return len(dom.getElementsByTagName('ANNOTATION_VALUE'))
+
+
+def get_file_name_ends_with(extension):
+    for file in os.listdir('.'):
+        if fnmatch.fnmatch(file, '*' + extension):
+            return file
+

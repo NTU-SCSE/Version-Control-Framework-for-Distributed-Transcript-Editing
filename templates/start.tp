@@ -1,0 +1,29 @@
+def main():
+    transcript_file_name = get_file_name_ends_with('.eaf')
+
+    # get system utc time
+    start_utc_time = datetime.datetime.utcnow().isoformat()
+
+    if platform.system() == 'Windows':
+        # todo
+        os.system('start /wait' + transcript_file_name)
+
+    elif platform.system() == 'Darwin':
+        os.system('open -W ' + transcript_file_name)
+
+    elif platform.system() == 'Linux':
+        # todo
+        ''
+    # get system utc time
+    end_utc_time = datetime.datetime.utcnow().isoformat()
+    create_directory(os.path.join(get_working_dir(), 'metadata'))
+    create_directory(os.path.join(get_working_dir(), 'metadata', 'sessions'))
+    session = {
+        'start': start_utc_time,
+        'end': end_utc_time,
+        'noOfMarkers': count_markers(from_working_dir(transcript_file_name)),
+        'noOfSegments': count_segments(from_working_dir(transcript_file_name)),
+        'editor': parent_dir_name()
+    }
+
+    write_file(from_working_dir('metadata', 'sessions', start_utc_time + '.json'), json.dumps(session))
