@@ -25,7 +25,7 @@ The technologies under this project includes Git and Django.
 
 1. Download source
 2. Install dependencies: `$ pip install -r requirements.txt`
-2. Start admin site: `$ python manage.py startserver`
+2. Start admin site: `$ python manage.py runserver`
 
 ## Workflow
 
