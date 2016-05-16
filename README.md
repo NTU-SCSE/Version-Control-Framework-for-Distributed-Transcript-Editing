@@ -25,19 +25,33 @@ The technologies under this project includes Git and Django.
 
 1. Download source
 2. Install dependencies: `$ pip install -r requirements.txt`
-2. Start admin site: `$ python manage.py runserver`
 
-## User Guide
+
+## Prerequisite Checklist
 
 ### Admin
 
 #### Preparing Git
 
-Make sure you have an available Git hosting, such as GitHub, BitBucket, your own GitLab server, or your company's repository hosting.
+First, make sure you have an available Git hosting, such as GitHub, BitBucket, your own GitLab server, or your company's repository hosting.
 
+Second, make sure you have set up SSH for Git so that you can successfully access remote SSH URLs from command line.
 
+#### Choose a Local Workspace ("Source" Folder)
 
-#### Create Super User
+Choose a directory on your local computer as the "source", where you store the audio/video and transcript file pairs. 
+
+For example, `"~/Documents/source"` on Mac. From now, we will denote the absolute path of the source folder as `[path_to_source]`
+
+## User Guide
+
+### Admin
+
+#### Start Admin Site
+
+`$ python manage.py runserver`
+
+#### Create Super User (Admin)
 
 If there is no super user in the system yet, create one using the following command:
 
@@ -47,10 +61,10 @@ $ python manage.py createsuperuser
 
 #### Login to Admin Site
 
-1. Go to http://127.0.0.1:8000/admin/login/ 
+1. Go to http://127.0.0.1:8000/admin/login/
 1. Login using the created super user account.
 
-#### Setup Repository for a New User
+#### Setup Repository for a New Editor
 
 First, create a user account in the Django admin:
 
@@ -70,8 +84,24 @@ Finally, create an entry for `Editor` in the Django admin
 1. Go to http://127.0.0.1:8000/admin/mdls/editor/ 
 1. Click "ADD EDITOR" on the upper right corner
 1. Select from the drop down menu "User" as the user that you just created
-1. Fill in the rest of the form ("http" and "ssh" fields indicate the protocol of the Git repository URL)
+1. Fill in the rest of the form ("http" and "ssh" fields indicate the protocol of the Git repository URL), while leaving the "With local repository" as UNCHECKED
+1. Click "SAVE"
 
 #### Add a New Job
+
+First, copy the to-be-edited audio/video and transcript file pair into the pre-designated "source" folder at `[path_to_source]`. Make sure the audio/video file has **exactly the same** filename prefix (filename without extension) as the transcript file.
+
+Second, navigate to the web page
+
+1. Go to http://127.0.0.1:8000/admin/mdls/file/
+1. Click "ADD FILE" on the upper right corner
+
+If you want to allocation the job later, you may only need to fill in "Media file" and "Transcript file" fields in the form, which are the file names (with extensions) of the video/audio and transcript files.
+
+However, if you have decided which editor you wanna allocate this job to, when the start time and deadline are, you may fill in the "Editor", "Start" and "Deadline" fields as well.
+
+Then, leave all other fields untouched, and click "SAVE".
+
+
 
 *To be continued - this document is still in progress, while the entire software system is working; you may wish to download the source and try out the features that are not documented yet*
