@@ -15,4 +15,4 @@ tests/report/
 *.pot
 *.pyc
 .idea/
-
+workspace/

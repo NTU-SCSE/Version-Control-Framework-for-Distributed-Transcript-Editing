@@ -71,8 +71,8 @@ def make_allocation(self, request, queryset):
                     os.path.join(file.get_absolute_dir(), file.media_filename))
 
         # git add, commit and push
-        # command = CommandBuilder().append_cd(file.editor.get_absolute_dir()).append_git_add_all().append_git_commit().append_git_push().build()
-        # os.system(command)
+        command = CommandBuilder().append_cd(file.editor.get_absolute_dir()).append_git_add_all().append_git_commit().append_git_push().build()
+        os.system(command)
 
         # update flag
         file.is_allocated = True
@@ -96,8 +96,8 @@ def get_latest_data(self, request, queryset):
             content = read_file(session_file_path)
             data = json.loads(content)
             session_entry = SessionHistory.objects.create(
-                start_datetime=localize_to_utc(data['start']),
-                end_datetime=localize_to_utc(data['end']),
+                start_datetime=localize_to_utc(data['start'].replace('@', ':')),
+                end_datetime=localize_to_utc(data['end'].replace('@', ':')),
                 marker_count=data['noOfMarkers'],
                 segment_count=data['noOfSegments'],
                 editor=Editor.objects.get(user__username=data['editor']),

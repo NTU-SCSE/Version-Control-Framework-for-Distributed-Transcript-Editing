@@ -37,7 +37,7 @@ First, make sure you have an available Git hosting, such as GitHub, BitBucket, y
 
 Second, make sure you have set up SSH for Git so that you can successfully access remote SSH URLs from command line.
 
-#### Choose a Local Workspace ("Source" Folder)
+#### Choose a Local "Source" Folder
 
 Choose a directory on your local computer as the "source", where you store the audio/video and transcript file pairs. 
 
@@ -81,7 +81,7 @@ Then, configure your Git hosting
 
 Finally, create an entry for `Editor` in the Django admin
 
-1. Go to http://127.0.0.1:8000/admin/mdls/editor/ 
+1. Go to http://127.0.0.1:8000/admin/mdls/editor/
 1. Click "ADD EDITOR" on the upper right corner
 1. Select from the drop down menu "User" as the user that you just created
 1. Fill in the rest of the form ("http" and "ssh" fields indicate the protocol of the Git repository URL), while leaving the "With local repository" as UNCHECKED
@@ -101,6 +101,7 @@ If you want to allocation the job later, you may only need to fill in "Media fil
 However, if you have decided which editor you wanna allocate this job to, when the start time and deadline are, you may fill in the "Editor", "Start" and "Deadline" fields as well.
 
 Then, leave all other fields untouched, and click "SAVE".
+
 
 
 
