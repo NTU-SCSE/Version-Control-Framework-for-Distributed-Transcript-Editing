@@ -58,7 +58,10 @@ def make_allocation(self, request, queryset):
         # generate metadata file
         metadata = {
             'id': file.id,
-            'type': file.type
+            'type': file.type,
+            'comment': '',
+            'progress': 0.0,
+            'finished': False
         }
         write_file(os.path.join(file.get_absolute_metadata_dir(), METADATA_FILE_NAME), json.dumps(metadata))
 
