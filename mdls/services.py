@@ -70,6 +70,10 @@ def make_allocation(self, request, queryset):
         shutil.copy(os.path.join(BASE_DIR, SOURCE_DIR_NAME, file.media_filename),
                     os.path.join(file.get_absolute_dir(), file.media_filename))
 
+        # git pull
+        command = CommandBuilder().append_cd(file.get_absolute_dir()).append_git_pull().build()
+        os.system(command)
+
         # git add, commit and push
         command = CommandBuilder().append_cd(file.editor.get_absolute_dir()).append_git_add_all().append_git_commit().append_git_push().build()
         os.system(command)
@@ -129,6 +133,10 @@ def complete_and_move_back_to_source_folder(self, request, queryset):
     files = queryset.filter(is_allocated=True, is_completed=False)
 
     for file in files:
+        # git pull
+        command = CommandBuilder().append_cd(file.get_absolute_dir()).append_git_pull().build()
+        os.system(command)
+
         # move transcript back to source folder and replace
         source_dir_path = first_level_dir_absolute_path(SOURCE_DIR_NAME)
         os.remove(os.path.join(source_dir_path, file.transcript_filename))

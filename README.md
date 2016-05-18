@@ -96,11 +96,22 @@ Second, navigate to the web page
 1. Go to http://127.0.0.1:8000/admin/mdls/file/
 1. Click "ADD FILE" on the upper right corner
 
-If you want to allocation the job later, you may only need to fill in "Media file" and "Transcript file" fields in the form, which are the file names (with extensions) of the video/audio and transcript files.
+Fill in "Media file" and "Transcript file" fields in the form, which are the file names (with extensions) of the video/audio and transcript files.
 
-However, if you have decided which editor you wanna allocate this job to, when the start time and deadline are, you may fill in the "Editor", "Start" and "Deadline" fields as well.
+Then, while leaving all other fields untouched, and click "SAVE".
 
-Then, leave all other fields untouched, and click "SAVE".
+#### Allocate a Job
+
+1. http://127.0.0.1:8000/admin/mdls/file/
+1. Click and enter the detail page of the file that you wish to allocation
+1. Select the editor in the dropdown menu "Editor" and click "SAVE"
+1. Click the "Assigned but not allocated" filter on the right
+1. Tick the file that you just assigned to an editor
+1. Select "Make allocation" in the "Action" dropdown menu
+1. Click the button "Go"
+1. Wait for the web page to finish loading
+
+Now, you may check the folder at `workspace/[editor_name]/[file_id]` and verify if all the necessary files are present.
 
 
 
