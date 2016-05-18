@@ -43,6 +43,13 @@ Choose a directory on your local computer as the "source", where you store the a
 
 For example, `"~/Documents/source"` on Mac. From now, we will denote the absolute path of the source folder as `[path_to_source]`
 
+### Editor
+
+1. Install all required tools/software in the previous section
+1. Setup the file association on your operating system, so that when you double click the ELAN transcript file, the system starts the ELAN app with the transcript file loaded.
+1. Setup the file association on your operating system, so that when you double click ".py" files, the system will prompt a command line window.
+1. If you have any problem during the setup, contact your admin for assistance.
+
 ## User Guide
 
 ### Admin
@@ -113,7 +120,53 @@ Then, while leaving all other fields untouched, and click "SAVE".
 
 Now, you may check the folder at `workspace/[editor_name]/[file_id]` and verify if all the necessary files are present.
 
+#### Get the Latest Update
 
+1. Go to http://127.0.0.1:8000/admin/mdls/file/
+1. Select "In progress" filter on the right column
+1. Tick all the files that you wish to get the latest progress on
+1. Select "Get latest data" in the dropdown menu of "Action" and click the "Go" button
+1. Wait for the web page to finish loading
 
+Now you can see each file's
 
-*To be continued - this document is still in progress, while the entire software system is working; you may wish to download the source and try out the features that are not documented yet*
+1. Latest statistics - http://127.0.0.1:8000/admin/mdls/sessionhistory/
+1. Editing session history - http://127.0.0.1:8000/admin/mdls/sessionhistory/
+
+#### Complete a File
+
+1. Go to http://127.0.0.1:8000/admin/mdls/file/
+1. Tick the files that you wish to mark as completed and move back to the "source"  directory
+1. Select "Complete and move back to source folder" in the "Action" dropdown menu, and click "Go"
+1. Wait for the web page to finish loading
+
+Now you can see all completed files by selecting the "Completed & moved back to source folder" filter on the right.
+
+### Editor
+
+#### First-time Setup Repository
+
+1. Get the `clone.py` file from the admin
+1. Place the `clone.py` in a folder that you'd prefer to be your workspace
+1. Double click `clone.py` to run the script
+1. Enter your username and password as instructed in the prompt window
+
+#### Sync to the Latest Version
+
+1. Go to your workspace folder
+1. Double click `pull.py`
+1. Enter your username and password as instructed in the prompt window
+
+#### Work on a Transcript File
+
+1. Go to the file folder in your workspace
+1. Double click `start.py`
+1. Work on the transcript file on the ELAN window
+1. When finishing, close the ELAN window only, with the command prompt window open.
+1. Fill in the prompt questions in the command line window, as well as your username and password, as instructed.
+
+#### Push Your Changes to the Server
+
+1. Go to the file folder in your workspace
+1. Double click `push.py`
+1. Fill in the prompt questions in the command line window, as well as your username and password, as instructed
