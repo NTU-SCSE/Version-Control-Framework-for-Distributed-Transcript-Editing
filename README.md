@@ -1,4 +1,4 @@
-# Version Control Framework for Distributed Transcript Editing(tm)
+# Version Control Framework for Distributed Transcript Editing
 
 ## Introduction
 
