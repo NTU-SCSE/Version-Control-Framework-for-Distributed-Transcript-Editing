@@ -105,6 +105,8 @@ Second, navigate to the web page
 
 Fill in "Media file" and "Transcript file" fields in the form, which are the file names (with extensions) of the video/audio and transcript files.
 
+Note: there must be no space in the file name.
+
 Then, while leaving all other fields untouched, and click "SAVE".
 
 #### Allocate a Job

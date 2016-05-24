@@ -16,3 +16,5 @@ tests/report/
 *.pyc
 .idea/
 workspace/
+source/
+

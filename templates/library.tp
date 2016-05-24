@@ -51,26 +51,41 @@ def pause():
 
 
 def count_markers(file_path):
-    content = read_file(file_path)
-    dom = parseString(content)
-    result = dom.getElementsByTagName('ANNOTATION_VALUE')
-    count = 0
-    for x in result:
-        if x.firstChild:
-            data = x.firstChild.data
-            if data.find('#') != -1:
-                count += 1
-    return count
+    if file_path.lower().endswith('.eaf'):
+        content = read_file(file_path)
+        dom = parseString(content)
+        result = dom.getElementsByTagName('ANNOTATION_VALUE')
+        count = 0
+        for x in result:
+            if x.firstChild:
+                data = x.firstChild.data
+                if data.find('#') != -1:
+                    count += 1
+        return count
+    elif file_path.lower().endswith('.textgrid'):
+        count = 0
+        with open(file_path) as f:
+            for line in f:
+                if line.strip().startswith('text = "#'):
+                    count += 1
+        return count
 
 
 def count_segments(file_path):
-    content = read_file(file_path)
-    dom = parseString(content)
-    return len(dom.getElementsByTagName('ANNOTATION_VALUE'))
+    if file_path.lower().endswith(".eaf"):
+        content = read_file(file_path)
+        dom = parseString(content)
+        return len(dom.getElementsByTagName('ANNOTATION_VALUE'))
+    elif file_path.lower().endswith(".textgrid"):
+        count = 0
+        with open(file_path) as f:
+            for line in f:
+                if line.strip().startswith('text = "'):
+                    count += 1
+        return count
 
 
 def get_file_name_ends_with(extension):
     for file in os.listdir('.'):
-        if fnmatch.fnmatch(file, '*' + extension):
+        if file.lower().endswith(extension):
             return file
-

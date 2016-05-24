@@ -1,6 +1,9 @@
 def main():
     transcript_file_name = get_file_name_ends_with('.eaf')
 
+    if transcript_file_name is None:
+        transcript_file_name = get_file_name_ends_with('.textgrid')
+
     # get system utc time
     start_utc_time = datetime.datetime.utcnow().isoformat().replace(':', "@")
 

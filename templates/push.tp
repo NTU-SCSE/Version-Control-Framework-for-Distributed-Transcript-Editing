@@ -1,11 +1,15 @@
 def get_media_file():
     for file in os.listdir('.'):
-        if (not os.path.isdir(file)) and (not file.startswith('.')) and (not file.endswith('.py')) and (not file.endswith('.eaf')) and (not file.endswith('.pfsx')):
+        if (not os.path.isdir(file)) and (not file.startswith('.')) and (not file.endswith('.py')) and (not file.endswith('.eaf')) and (not file.endswith('.pfsx')) and (not file.lower().endswith('.textgrid')):
             return file
 
 
 def analyze_progress_for_correction():
     transcript_file_path = from_working_dir(get_file_name_ends_with('.eaf'))
+
+    if transcript_file_name is None:
+        transcript_file_name = get_file_name_ends_with('.textgrid')
+
     marker_count = count_markers(transcript_file_path)
     segment_count = count_segments(transcript_file_path)
     progress = 1 - float(marker_count) / float(segment_count)
