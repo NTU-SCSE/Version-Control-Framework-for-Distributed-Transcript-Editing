@@ -5,10 +5,12 @@ def get_media_file():
 
 
 def analyze_progress_for_correction():
-    transcript_file_path = from_working_dir(get_file_name_ends_with('.eaf'))
+    transcript_file_path = get_file_name_ends_with('.eaf')
 
-    if transcript_file_name is None:
-        transcript_file_name = get_file_name_ends_with('.textgrid')
+    if transcript_file_path is None:
+        transcript_file_path = get_file_name_ends_with('.textgrid')
+
+    transcript_file_path = from_working_dir(transcript_file_path)
 
     marker_count = count_markers(transcript_file_path)
     segment_count = count_segments(transcript_file_path)

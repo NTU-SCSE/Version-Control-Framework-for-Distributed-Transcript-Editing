@@ -8,7 +8,8 @@ def main():
     start_utc_time = datetime.datetime.utcnow().isoformat().replace(':', "@")
 
     if platform.system() == 'Windows':
-        os.system('start /wait ' + transcript_file_name)
+        media_file_name = get_file_name_ends_with('.wav')
+        os.system('start /wait Praat --open ' + transcript_file_name + ' ' + media_file_name)
 
     elif platform.system() == 'Darwin':
         os.system('open -W ' + transcript_file_name)
